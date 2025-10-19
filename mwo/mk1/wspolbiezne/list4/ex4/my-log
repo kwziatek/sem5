@@ -1,0 +1,46 @@
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1$ #karol wziatek 279734
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1$ svn export https://repo.cs.pwr.edu.pl/279734-dir/mk1/list4/ex4/
+Authentication realm: <https://repo.cs.pwr.edu.pl:443> Subversion Repository 
+Password for '279734': *******
+
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+kf.windowsystem: Cannot use KWindowSystem without a QGuiApplication
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+A    ex4
+A    ex4/monitor
+A    ex4/go.mod
+A    ex4/main.go
+A    ex4/monitor/monitor.go
+Exported revision 68.
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1$ cd ex4
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1/ex4$ go run m
+main.go  monitor/ 
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1/ex4$ go run main.go > out
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1/ex4$ shasum out
+f5a097aad520e4431dd3c1a952f4f43a2bc10b52  out
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1/ex4$ svn import out https://repo.cs.pwr.edu.pl/279734-dir/mk1/list4/ex4/out -m "adding out"
+Authentication realm: <https://repo.cs.pwr.edu.pl:443> Subversion Repository 
+Password for '279734': *******
+
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+kf.windowsystem: Cannot use KWindowSystem without a QGuiApplication
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Couldn't start kwalletd:  QDBusError("org.freedesktop.DBus.Error.Spawn.ChildSignaled", "Process org.kde.kwalletd5 received signal 6")
+Adding         out
+Committing transaction...
+Committed revision 69.
+wztq@DESKTOP-1Q1LLS5:~/studia/sem4/wspolbiezne/mk1/ex4$ tmux capture-pane -p -S'-' -E'-' -J > my-log
+
