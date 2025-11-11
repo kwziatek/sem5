@@ -1,0 +1,71 @@
+Problem:    airport
+Rows:       8
+Columns:    12
+Non-zeros:  36
+Status:     OPTIMAL
+Objective:  total_cost = 8525000 (MINimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 total_cost   B      8.525e+06                             
+     2 requirement[air1]
+                    NS        110000        110000             =             7 
+     3 requirement[air2]
+                    NS        220000        220000             =            11 
+     4 requirement[air3]
+                    NS        330000        330000             =             7 
+     5 requirement[air4]
+                    NS        440000        440000             =            12 
+     6 capacity[com1]
+                    NU        275000                      275000            -1 
+     7 capacity[com2]
+                    B         165000                      550000 
+     8 capacity[com3]
+                    NU        660000                      660000            -3 
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 purchase[air1,com1]
+                    NL             0             0                           4 
+     2 purchase[air1,com2]
+                    B         110000             0               
+     3 purchase[air1,com3]
+                    NL             0             0                           4 
+     4 purchase[air2,com1]
+                    B         165000             0               
+     5 purchase[air2,com2]
+                    B          55000             0               
+     6 purchase[air2,com3]
+                    NL             0             0                           6 
+     7 purchase[air3,com1]
+                    NL             0             0                           3 
+     8 purchase[air3,com2]
+                    NL             0             0                           5 
+     9 purchase[air3,com3]
+                    B         330000             0               
+    10 purchase[air4,com1]
+                    B         110000             0               
+    11 purchase[air4,com2]
+                    NL             0             0                           1 
+    12 purchase[air4,com3]
+                    B         330000             0               
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output
