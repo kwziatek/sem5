@@ -1,5 +1,5 @@
 Problem:    airport
-Rows:       8
+Rows:       9
 Columns:    12
 Non-zeros:  36
 Status:     OPTIMAL
@@ -22,6 +22,8 @@ Objective:  total_cost = 8525000 (MINimum)
                     B         165000                      550000 
      8 capacity[com3]
                     NU        660000                      660000            -3 
+     9 demand_supply
+                    B              0                      385000 
 
    No. Column name  St   Activity     Lower bound   Upper bound    Marginal
 ------ ------------ -- ------------- ------------- ------------- -------------

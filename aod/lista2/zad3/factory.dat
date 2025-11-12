@@ -1,0 +1,32 @@
+set T := 1 2 3 4;
+
+param normal_cap := 100;
+param overtime_cap :=
+    1 60
+    2 65
+    3 70
+    4 60;
+
+param c :=
+    1 6000
+    2 4000
+    3 8000
+    4 9000;
+
+param o :=
+    1 8000
+    2 6000
+    3 10000
+    4 11000;
+
+param d :=
+    1 130
+    2 80
+    3 125
+    4 195;
+
+param store_cost := 1500;
+param store_cap := 70;
+param init_inv := 15;
+
+
