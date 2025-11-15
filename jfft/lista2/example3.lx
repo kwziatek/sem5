@@ -1,0 +1,18 @@
+%{
+    int count = 0;
+%}
+
+%%
+
+[a-z] {printf("%s is a lowercase character\n", yytext); count++;}
+.     {printf("%s is not a lowercase character\n", yytext); }
+\n    {return 0;}
+%%
+
+yywrap() {}
+
+int main() {
+    printf("Enter string: ");
+    yylex();
+    printf("lowercase letters count: %d\n", count);
+}

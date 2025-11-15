@@ -1,0 +1,45 @@
+%{
+    #include <stdbool.h>
+    int numberOfWords = 0;
+    int numberOfLines = 0;
+    bool anyCharsInRow = false;
+%}
+
+%%
+
+[ \t]*[\n][ \t\n]*       {
+                            printf("\n"); 
+                            if(anyCharsInRow) {
+                                numberOfLines++;
+                                anyCharsInRow = false;
+                            }
+                        }
+[ \t]*                  {
+                            if (numberOfLines != 0) {
+                                printf(" ");
+                            }
+                        }
+[^ \t\n]+                {
+                            printf("%s", yytext);
+                            anyCharsInRow = true;
+                            numberOfWords++;
+                        }
+<<EOF>>                 {
+                            if(anyCharsInRow) {
+                                numberOfLines++;
+                                printf("\n");
+                            }
+                            return 0;
+                        }
+
+%%
+
+yywrap() {}
+
+int main() {
+    yylex();
+    printf("Number of lines: %d \n", numberOfLines);
+    printf("Number of words: %d \n", numberOfWords);
+
+    return 0;
+}
