@@ -1,0 +1,57 @@
+%{
+    #include <stdbool.h>
+    bool anyCharsInRow = false;
+    bool isThereCommentInRow = false;
+    bool saveDoc;
+%}
+
+%%
+
+[ \t\n]*[/]{2}[/!].*   {
+                            isThereCommentInRow = true;
+                            if(saveDoc) {
+                                printf("%s", yytext);
+                            }
+                        }
+[ \t\n]*[/][*][*!].*   {
+                            isThereCommentInRow = true;
+                            if(saveDoc) {
+                                printf("%s", yytext);
+                            }
+                        }
+[ \t\n]*[/][/*].*       {
+                            isThereCommentInRow = true;
+                        }
+[\n]                    {
+                            if(anyCharsInRow || !isThereCommentInRow) {
+                                printf("\n"); 
+                                anyCharsInRow = false;
+                                isThereCommentInRow = false;
+                            }
+                        }
+[^ \n\t/]               {
+                            anyCharsInRow = true;
+                            printf("%s", yytext);
+                        }
+<<EOF>>                 {
+                            if(anyCharsInRow) {
+                                printf("\n"); 
+                            }
+                            return 0;
+                        }
+
+%%
+
+yywrap() {}
+
+int main(int argc, char** argv) {
+
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--doc") == 0) {
+            saveDoc = true;
+        }
+    }
+
+    yylex();
+    return 0;
+}
