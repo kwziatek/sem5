@@ -1,0 +1,40 @@
+%{
+    #include <stdbool.h>
+    bool anyCharsInRow = false;
+    bool isThereCommentInRow = false;
+%}
+
+%%
+
+[#].*       {
+                isThereCommentInRow = true;
+            }
+[\n]        {
+                if(anyCharsInRow || !isThereCommentInRow) {
+                    printf("\n"); 
+                    anyCharsInRow = false;
+                    isThereCommentInRow = false;
+                }
+            }
+[^ \n\t#]   {
+                anyCharsInRow = true;
+                printf("%s", yytext);
+            }
+<<EOF>>     {
+                if(anyCharsInRow) {
+                    printf("\n"); 
+                }
+                return 0;
+            }
+
+
+%%
+
+yywrap() {}
+
+int main() {
+
+    yylex();
+
+    return 0;
+}
