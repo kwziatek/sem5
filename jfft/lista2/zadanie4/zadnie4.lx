@@ -1,0 +1,92 @@
+%{
+    #include <stack>
+    #include <iostream>
+    std::stack<int> numbers;
+    bool blocker = false;
+
+%}
+
+%%
+
+[0-9]       {
+                if(!blocker) {
+                   int value = yytext[0] - '0';
+                    numbers.push(value); 
+                }
+                
+            }
+[+*/-]      {
+                if(!blocker) {
+                    if(numbers.size() < 2) {
+                        printf("Za mało argumentów! \n");
+                        blocker = true;
+                        break;
+                    }
+
+                    int b = numbers.top();
+                    numbers.pop();
+                    int a = numbers.top();
+                    numbers.pop();
+                    int result;
+
+                    switch(yytext[0]) {
+                        case '+': result = a + b; break;
+                        case '-': result = a - b; break;
+                        case '*': result = a * b; break;
+                        case '/': result = a / b; break;
+                    }
+
+                    numbers.push(result);
+                }
+            }
+[ \t]       {}
+[\n]        {
+                if(!blocker) {
+                    if(numbers.size() > 1) {
+                        printf("Za mało operatorów! \n");
+                    } else if(numbers.size() == 1) {
+                        printf("%d\n", numbers.top());
+                    } else {
+                        printf("Nie podano żadnych liczb w wierszu! \n");
+                    }
+                }
+                
+                while(!numbers.empty()) {
+                    numbers.pop();
+                }
+                blocker = false;
+            }
+<<EOF>>     {
+                if(!blocker) {
+                    if(numbers.size() > 1) {
+                        printf("Za dużo liczb! \n");
+                    } else if(numbers.size() == 1) {
+                        printf("%d\n", numbers.top());
+                    } else {
+                        printf("Nie podano żadnych liczb w wierszu! \n");
+                    }
+                }
+                
+                while(!numbers.empty()) {
+                    numbers.pop();
+                }
+                blocker = false;
+                return 0;
+            }
+.           {
+                printf("Niepoprawny znak: %s\n", yytext);
+                blocker = true;
+            }
+
+
+
+%%
+
+int yywrap() {return 1;}
+
+int main() {
+
+    yylex();
+    
+    return 0;
+}
