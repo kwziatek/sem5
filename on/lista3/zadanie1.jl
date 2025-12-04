@@ -1,23 +1,25 @@
-function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
+#Karol Wziątek - obliczenia naukowe lista 3
 
+function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
     fa = f(a)
     fb = f(b)
 
-    # Sprawdzenie czy funkcja zmienia znak w przedziale
+    #Sprawdzanie czy istnieje pierwiastek
     if fa * fb > 0
-        return (NaN, NaN, 0, 1)   # err = 1
+        return (NaN, NaN, 0, 1)
     end
 
     it = 0
-    # Maksymalna liczba iteracji to taka, która gwarantuje osiągnięcie dokładności delta - bezpiecznik
-    maxit = ceil(Int, log2((b - a) / delta))
 
+    #Wyznaczenie kolejnej wartości 
     r = (a + b) / 2
     fr = f(r)
 
-    while (b - a) / 2 > delta && abs(fr) > epsilon && it < maxit
+    #Sprawdzanie warunku dokładności 
+    while b - a > delta && abs(fr) > epsilon
         it += 1
 
+        #Wyznaczenia kolejnej wartości 
         if fa * fr < 0
             b = r
             fb = fr
@@ -30,6 +32,5 @@ function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
         fr = f(r)
     end
 
-    # err = 0
     return (r, fr, it, 0)
 end
