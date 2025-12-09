@@ -1,24 +1,28 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -O2 -Wall
 
-SRC = normal_dijkstra.cpp
-BIN = dijkstra
+# Sources and binaries
+SRC_NORMAL = normal_dijkstra.cpp
+SRC_DIAL = dial_dijkstra.cpp
+SRC_RADIX = radix_head_dijkstra.cpp
 
-# Default target
-all: $(BIN)
+BIN_NORMAL = dijkstra
+BIN_DIAL = dial
+BIN_RADIX = radixheap
 
-$(BIN): $(SRC)
+.PHONY: all dijkstra dial radixheap clean
+
+# Default: build all three implementations
+all: $(BIN_NORMAL) $(BIN_DIAL) $(BIN_RADIX)
+
+$(BIN_NORMAL): $(SRC_NORMAL)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-.PHONY: run clean
+$(BIN_DIAL): $(SRC_DIAL)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Usage: make run DATA=graph.gr SOURCES=sources.ss OUT=results.res
-DATA ?= duze_dane.gr
-SOURCES ?= zrodla.ss
-OUT ?= wyniki.ss.res
-
-run: $(BIN)
-	./$(BIN) -d $(DATA) -ss $(SOURCES) -oss $(OUT)
+$(BIN_RADIX): $(SRC_RADIX)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
-	rm -f $(BiN)
+	rm -f $(BIN_NORMAL) $(BIN_DIAL) $(BIN_RADIX) *.o

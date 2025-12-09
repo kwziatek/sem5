@@ -2,3 +2,23 @@ Algorytmy optymalizacji dyskretnej - lista 3 laboratorium
 Autor: Karol Wziątek (279734)
 
 Implementacja algorytmów została napisana w c++. Wykorzystałem kilka bibliotek, lecz żadna z nich nie wymaga dodatkowej instalacji. 
+
+Kilka wyjaśnień:
+    - jest napisany skrypt do tworzenia grafów, do własnego testowania
+        python3 generate_graph.py -n <N> -m <M> -o <FILE> -s <INT> -w <INT> --unique (optional)
+        python3 generate_graph.py -n 5000 -m 50000 -o duze_dane.gr -s 42 -w 1000
+
+W celu kompilacji należy użyć metody komendy: "make".
+
+Urochomienie programów:
+    - p2p
+        ./dijkstra -d ./input/duze_dane.gr -p2p ./input/pary.p2p -op2p ./output/dijkstra.p2p.res
+        ./dial -d ./input/duze_dane.gr -p2p ./input/pary.p2p -op2p ./output/dial.p2p.res
+        ./radixheap -d ./input/duze_dane.gr -p2p ./input/pary.p2p -op2p ./output/radixheap.p2p.res
+    - ss
+        ./dijkstra -d ./input/duze_dane.gr -ss ./input/zrodla.ss -oss ./output/dijkstra.ss.res
+        ./dial -d ./input/duze_dane.gr -ss ./input/zrodla.ss -oss ./output/dial.ss.res
+        ./radixheap -d ./input/duze_dane.gr -ss ./input/zrodla.ss -oss ./output/radixheap.ss.res
+
+
+
