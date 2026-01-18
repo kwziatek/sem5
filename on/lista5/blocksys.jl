@@ -90,7 +90,7 @@ function load_matrix(filepath::String)
                 set_val!(A, i, j, val)
             end
         end
-        return A
+        return A 
     end
 end
 
@@ -113,6 +113,7 @@ function load_vector(filepath::String)
         end
         return b
     end
+
 end
 
 """

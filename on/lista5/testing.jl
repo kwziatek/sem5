@@ -8,20 +8,18 @@ using .blocksys
 using LinearAlgebra
 
 # Nazwy plików (przykładowe)
-FILE_A = "input_A.txt"
-FILE_B = "input_B.txt" 
+FILE_A = "Dane1000000_1_1/A.txt"
+FILE_B = "Dane1000000_1_1/b.txt" 
 CALCULATED_B = "calculated_B.txt"
 FILE_X_NO_PIVOT = "x_without_pivot.txt"
 FILE_X_PIVOT = "x_with_pivot.txt"
-FILE_X_NO_PIVOT_CAL_B = "x_wihtout_pivot_cal_B.txt"
+FILE_X_NO_PIVOT_CAL_B = "x_without_pivot_cal_B.txt"
 FILE_X_PIVOT_CAL_B = "x_with_pivot_cal_B.txt"
 
-# 1. Funkcja generująca przykładowe dane testowe
-# Tworzy plik input_A.txt w zadanym formacie dla n=16, l=4
-function generate_test_data_files()
-    open("A.txt", "w") do f
-        n = 16
-        l = 4
+# 1. Funkcje generująca przykładowe dane testowe
+# Funkcja tworzy plik input_A.txt w zadanym formacie
+function generate_test_input_A(FILE_A::String, n::Int, l::Int)
+    open(FILE_A, "w") do f
         println(f, "$n $l")
         # Generowanie bloków diagonalnych A (pełne)
         for k in 1:div(n,l)
@@ -54,11 +52,26 @@ function generate_test_data_files()
             end
         end
     end
-    println("Wygenerowano plik A.txt")
+    println("Wygenerowano plik $FILE_A")
 end
 
+# Funkcja tworzy plik input_B.txt w zadanym formacie
+function generate_test_input_b(FILE_B::String, n::Int)
+    open(FILE_B, "w") do f
+        println(f, "$n")
+        x = rand(Float64, n)
+            for val in x 
+                println(f, "$val")
+            end 
+    end
+end
+
+
 # Uruchomienie generowania danych testowych
-generate_test_data_files()
+n = 16  # rozmiar dużej macierzy
+l = 4   # rozmiar małych macierzy
+# generate_test_input_A(FILE_A, n, l)
+# generate_test_input_b(FILE_B, n)
 
 # ----------------------------------------------------------
 # SCENARIUSZ 1: Obliczanie prawej strony i rozwiązywanie
@@ -120,7 +133,7 @@ t5_end = time()
 
 # Weryfikacja (znając x_exact z generatora)
 # err_file_no = norm(x_file_no_pivot - x_exact) / norm(x_exact)
-save_solution(FILE_X_NO_PIVOT, x_file_no_pivot, 0)
+save_solution(FILE_X_NO_PIVOT, x_file_no_pivot, nothing)
 
 println("-> Czas obliczeń: $(round(t5_end - t5_start, digits=4))s")
 # println("-> Błąd względny: $err_file_no")
@@ -134,7 +147,7 @@ t6_end = time()
 
 # Weryfikacja
 # err_file_pivot = norm(x_file_pivot - x_exact) / norm(x_exact)
-save_solution(FILE_X_PIVOT, x_file_pivot, 0)
+save_solution(FILE_X_PIVOT, x_file_pivot, nothing)
 
 println("-> Czas obliczeń: $(round(t6_end - t6_start, digits=4))s")
 # println("-> Błąd względny: $err_file_pivot")

@@ -1,0 +1,7 @@
+TODO:
+    - format the FILE_B according the specification (done)
+    - zacząć sprawozdanie
+        - puścić testy, jest ich niedużo więc można to zrobić ręcznie
+        - sprawdzić czy wyniki pokrywają się z wynikami innych
+    -wysłać sprawko i on odhaczone :)))
+    
