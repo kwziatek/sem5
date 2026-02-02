@@ -29,6 +29,7 @@ function rysujNnfx(f, a::Float64, b::Float64, n::Int; wezly::Symbol = :rownoodle
 
     # --- 5. Rysowanie ---
     plot(X, Yf, label="f(x)", lw=2)
+    # plot(x, fx, label="f(x)") # dla funkcji anonimowych zadanych tabelą punktów
     plot!(X, Yp, label="Wielomian Newtona", lw=2, linestyle=:dash)
     scatter!(x, fx, label="Węzły interpolacji", color=:red)
     savefig("wykres.png")
